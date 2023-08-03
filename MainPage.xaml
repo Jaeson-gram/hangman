@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HangMan.MainPage">
+
+    <ScrollView>
+        <Grid RowDefinitions=".6*, .4*">
+
+            <VerticalStackLayout Spacing="10">
+                <Label HorizontalTextAlignment="Center"
+                   FontAttributes="Bold"
+                   Text="{Binding GameStatus}"/>
+                <Image
+                Source="{Binding CurrentImage}"
+                SemanticProperties.Description="the hanger, specifying how many times the user has made an error!"
+                HeightRequest="200"/>
+
+                <Label HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   FontSize="30"
+                   Text="{Binding Spotlight}"/>
+
+                <Label HorizontalOptions="Center"
+                       FontSize="35"
+                       Text="{Binding Message}"/>
+
+                <Button HorizontalOptions="Center"
+                        WidthRequest="100"
+                        Text="Reset"
+                        Clicked="Reset_Button_Clicked"/>
+
+            </VerticalStackLayout>
+
+            <FlexLayout x:Name="alphabetsContainer" Grid.Row="1" Wrap="Wrap" JustifyContent="SpaceEvenly" BindableLayout.ItemsSource="{Binding Alphabets}">
+
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Button BackgroundColor="Navy"
+                        HeightRequest="50"
+                        Text="{Binding .}"
+                        Clicked="Button_Clicked"/>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+
+            </FlexLayout>
+
+        </Grid>
+
+    </ScrollView>
+
+</ContentPage>
